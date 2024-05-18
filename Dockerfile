@@ -1,14 +1,10 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk-alpine
+# Stage 1: Build the application
+FROM maven:3.8.4-openjdk-17 AS build
+COPY ./ ./
+RUN mvn clean package -Dmaven.test.skip=true
 
-# Set the working directory in the container
-VOLUME /tmp
-
-# Copy the jar file into the container at /app
-COPY target/API-0.0.1-SNAPSHOT.jar API.jar
-
-# Make port 8080 available to the world outside this container
+# Stage 2: Create the final image
+FROM adoptopenjdk:17-jdk-alpine3.15
+COPY --from=build /home/app/target/API-0.0.1-SNAPSHOT.jar ./api.jar
 EXPOSE 8080
-
-# Run the jar file
-ENTRYPOINT ["java","-jar","API.jar"]
+ENTRYPOINT ["java", "-jar", "api.jar"]
