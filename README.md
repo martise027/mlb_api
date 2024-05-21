@@ -3,8 +3,9 @@
     <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white">
     <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white">
     <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white">
-
 </p>
+
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 ## introduction
 This is mlb API that return mlb players data based on 2023 hitting.
@@ -29,7 +30,7 @@ https://mlb-api.onrender.com/api/v1/player?position=SS&homerun=30
 # return player who belong to LAD and have hit more than 20 homerun
 https://mlb-api.onrender.com/api/v1/player?team=LAD&homerun=20
 ```
-### List of filter
+### List of available filter
 ```bash
 team
 position
